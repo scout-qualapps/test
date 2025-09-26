@@ -53,12 +53,12 @@ jobs:
       - name: Build Docker image
         run: |
           cd dbts/ng_scout
-          docker build -t ada/qual/dbt-test:${{ steps.generate_tag.outputs.TAG }} .
+          docker build -t ada/qual/dbt-test:$test .
 
       - name: Tag Docker image for ECR Public
         run: |
-          docker tag ada/qual/dbt-test:${{ steps.generate_tag.outputs.TAG }} 771225398400.dkr.ecr.us-west-2.amazonaws.com/ada/qual/dbt-test:${{ steps.generate_tag.outputs.TAG }}
+          docker tag ada/qual/dbt-test:$test 771225398400.dkr.ecr.us-west-2.amazonaws.com/ada/qual/dbt-test:$test
 
       - name: Push Docker image to ECR Public
         run: |
-          docker push 771225398400.dkr.ecr.us-west-2.amazonaws.com/ada/qual/dbt-test:${{ steps.generate_tag.outputs.TAG }}
+          docker push 771225398400.dkr.ecr.us-west-2.amazonaws.com/ada/qual/dbt-test:$test
